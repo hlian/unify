@@ -12,6 +12,7 @@ Let's unify these five types:
 
 That looks like this:
 
+```haskell
     spew :: Type -> Type -> IO ()
     spew left right =
       case unify [(left, right)] empty of
@@ -22,15 +23,10 @@ That looks like this:
 
     main :: IO ()
     main = do
-      -- TFn [TPrim PrimInt,TPrim PrimInt,TPrim PrimInt]
       spew ex1l ex1r
-      -- LinksErrorBottom (TFn [TVar A,TPrim PrimInt,TVar B]) (TFn [TPrim PrimInt,TVar C])
       spew ex2l ex2r
-      -- TFn [TVar C,TVar C,TVar C]
       spew ex3l ex3r
-      -- TFn [TFn [TVar B,TVar B],TFn [TVar B,TVar B]]
       spew ex4l ex4r
-      -- LinksErrorCycle B (TVar A)
       spew ex5l ex5r
       where
         ex1l = TFn [TPrim PrimInt, TPrim PrimInt, TVar A]
@@ -50,3 +46,4 @@ That looks like this:
     TFn [TVar C,TVar C,TVar C]
     TFn [TFn [TVar B,TVar B],TFn [TVar B,TVar B]]
     LinksErrorCycle B (TVar A)
+```

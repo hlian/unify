@@ -6,9 +6,9 @@ Let's unify these five types:
 
 * `int -> int -> 'a` and `'a -> int -> int` to get `int -> int -> int`.
 * `'a -> int -> 'b` and `int -> 'c` to get the bottom type (failure).
-* `a -> b -> c` and `b -> c -> a` to get `c -> c -> c`.
-* `a -> a` and `(b -> b) -> (b -> b)` to get `(b -> b) -> (b -> b)`.
-* `a -> [b]` and `b -> [a]` to get a cycle error.
+* `'a -> 'b -> 'c` and `'b -> 'c -> 'a` to get `'c -> 'c -> 'c`.
+* `'a -> 'a` and `('b -> 'b) -> ('b -> 'b)` to get `('b -> 'b) -> ('b -> 'b)`.
+* `'a -> ['b]` and `'b -> ['a]` to get a cycle error.
 
 That looks like this:
 
